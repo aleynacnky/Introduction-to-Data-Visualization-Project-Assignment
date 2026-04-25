@@ -1,148 +1,373 @@
 # 🚀 AI Destekli Metin ve Kod Analiz Asistanı
 
-Bu proje, kullanıcıların seçtikleri metin veya kod parçaları üzerinde **tek tuş (F8)** ile hızlı ve akıllı işlemler yapabilmesini sağlayan bir masaüstü uygulamasıdır.  
-
-Proje, temel olarak hocanın sağladığı veri görselleştirme projesi altyapısı üzerine geliştirilmiş olup, özellikle **yazılımcılar için genişletilmiş kod analiz ve düzeltme özellikleri** içermektedir.
+Bu proje, seçilen metin veya kod üzerinde **tek tuş (F8)** ile hızlı işlemler yapmanı sağlayan bir masaüstü uygulamasıdır.  
+Amaç: Metin işlemlerini kolaylaştırmak ve yazılımcılar için **hızlı kod analiz & düzeltme** aracı sunmak.
 
 ---
 
-## 🎯 Projenin Amacı
+## 🎯 Ne İşe Yarar?
 
-Bu uygulama ile kullanıcı:
-
-- Metinleri analiz edebilir, çevirebilir ve düzenleyebilir
-- Kod parçalarının **hangi dilde olduğunu tespit edebilir**
-- Kodlarda **hata olup olmadığını kontrol edebilir**
-- Hatalı kodları **otomatik olarak düzeltebilir**
-
-Tüm bu işlemler, sadece metni seçip **F8 tuşuna basarak** gerçekleştirilebilir.
+- Metinleri hızlıca düzenler (çeviri, özet, gramer)
+- Kodun hangi dilde olduğunu anlar
+- Kodda hata olup olmadığını söyler
+- Hatalı kodu **otomatik düzeltir**
 
 ---
 
 ## ⚙️ Özellikler
 
-### 📝 Metin İşleme Özellikleri (Orijinal Proje)
-- Gramer düzeltme
-- İngilizce ↔ Türkçe çeviri
-- Metin özetleme
-- Metni daha resmi hale getirme
-- Mail cevap önerisi oluşturma
-- Python kodu üretme
-- Oyun yorumlama sistemi
+### 📝 Metin İşleme
+- 📝 Gramer Düzelt
+- 🇬🇧 İngilizceye Çevir
+- 🇹🇷 Türkçeye Çevir
+- 📑 Özetle (Madde Madde)
+- 💼 Daha Resmi Yap
+- 🐍 Python Koduna Çevir
+- 📧 Cevap Yaz (Mail)
+- 🎮 PS5 Oyun Skor + Acımasız Yorum
 
 ---
 
-### 💻 Kod Analiz Özellikleri (Eklenen)
+### 💻 Kod İşlemleri
 
 #### 🔎 Hangi Dil
-Seçilen kodun hangi programlama diline ait olduğunu tespit eder.
-
-Desteklenen diller:
-- Python
-- C
-- C++
-- C#
-- Java
-- JavaScript
-- HTML
-- CSS
-
----
+Seçilen kodun dilini tespit eder  
+(Python, C, C++, C#, Java, JS, HTML, CSS)
 
 #### 🧪 Kodu Test Et
-Kodun yapısını analiz eder ve:
-
-- Hata varsa:
-  - Hata türünü belirtir (örnek: **Syntax Hatası**, **Metot Adı Hatası**)
-  - Hatalı satırı gösterir
-- Hata yoksa:
-  - Kodun doğru olduğunu bildirir
-
----
+- Hata varsa: türünü ve satırını gösterir  
+- Hata yoksa: bilgi verir  
 
 #### 🛠️ Hata Düzelt
-Kod içindeki hataları otomatik olarak düzeltir ve:
-
-- Kullanıcıya **tam ve çalışır kodu**
-- Açıklama olmadan, direkt sonuç olarak verir
+- Koddaki hataları düzeltir  
+- **Düzeltilmiş tam kodu** verir  
 
 ---
 
-## 🧠 Kullanım Mantığı
+## 🧠 Nasıl Kullanılır?
 
-1. Herhangi bir metni veya kodu seç
-2. **F8 tuşuna bas**
-3. Açılan menüden istediğin işlemi seç
-4. Sonucu:
-   - Ya doğrudan metin içine yazdır
-   - Ya da ayrı pencerede görüntüle
+1. Metin veya kod seç  
+2. **F8 tuşuna bas**  
+3. Menüden işlem seç  
+4. Sonucu gör  
 
 ---
 
-## ⚙️ Gereksinimler & Kurulum
+## ⚙️ Kurulum
 
-### 🧩 Gereksinimler
-
-Bu projenin çalışabilmesi için aşağıdaki yazılımların yüklü olması gerekmektedir:
-
+### Gereksinimler
 - Python 3.8+
-- Ollama (yerel AI modeli için)
-- İnternet bağlantısı (model erişimi için)
+- Ollama
 
----
-
-### 📦 Gerekli Python Kütüphaneleri
+### Kurulum
 
 ```bash
 pip install -r requirements.txt
+```
+
+### Ollama İçin
+
+```bash
+ollama pull llama3.2
+ollama serve
+```
+
+### Çalıştırma
+
+```bash
+python main.pyw
+```
+
+---
 
 ## 📊 Proje Akış Diyagramı
 
 ```mermaid
 flowchart TD
 
-A[Kullanıcı metin veya kod seçer] --> B[F8 tuşuna basar]
+A[Kullanıcı metin/kod seçer] --> B[F8 tuşuna basar]
 B --> C[Seçili içerik panoya kopyalanır]
-C --> D[Uygulama menüsü açılır]
+C --> D[Menü açılır]
 
-D --> E{İşlem türü seçilir}
+D --> E{İşlem seç}
 
-E --> F[Metin İşleme Özellikleri]
-E --> G[Kod Analiz Özellikleri]
+E --> F[Metin İşleme]
+E --> G[Kod İşlemleri]
 
-F --> F1[Gramer Düzelt]
-F --> F2[İngilizceye Çevir]
-F --> F3[Türkçeye Çevir]
-F --> F4[Özetle]
-F --> F5[Daha Resmi Yap]
-F --> F6[Python Koduna Çevir]
-F --> F7[Mail Cevabı Yaz]
-F --> F8[PS5 Oyun Skor ve Yorum]
-
-F1 --> H[AI modeli ile işlem yapılır]
-F2 --> H
-F3 --> H
-F4 --> H
-F5 --> H
-F6 --> H
-F7 --> H
-F8 --> H
+F --> F1[Gramer / Çeviri / Özet]
+F1 --> H[AI Modeli]
+H --> I[Sonuç göster]
 
 G --> G1[Hangi Dil]
 G --> G2[Kodu Test Et]
 G --> G3[Hata Düzelt]
 
-G1 --> I[Kod dili tespit edilir]
-G2 --> J[Kural tabanlı hata kontrolü yapılır]
-G3 --> K[Kural tabanlı düzeltme uygulanır]
+G1 --> J[Dil tespiti]
+G2 --> K[Hata analizi]
+G3 --> L[Kod düzeltme]
 
-I --> L[Sonuç pencerede gösterilir]
-J --> M{Hata var mı?}
-M -->|Evet| N[Hata türü ve hatalı satır gösterilir]
-M -->|Hayır| O[Hata olmadığı bilgisi gösterilir]
+K --> M{Hata var mı}
+M -->|Evet| N[Hata türü + satır göster]
+M -->|Hayır| O[Hata yok mesajı]
 
-K --> P[Düzeltilmiş kodun tam hali oluşturulur]
-P --> L
-N --> L
-O --> L
-H --> Q[Sonuç metne yazılır veya pencerede gösterilir]
+L --> P[Düzeltilmiş kod]
+
+N --> Q[Sonuç penceresi]
+O --> Q
+P --> Q
+I --> Q
+```
+
+---
+
+## 📌 Örnek Kullanımlar
+
+Aşağıdaki örnekler, uygulamanın 3 temel fonksiyonunun nasıl çalıştığını gösterir:
+
+- 🔎 **Hangi Dil**
+- 🧪 **Kodu Test Et**
+- 🛠️ **Hata Düzelt**
+
+Her dil için hem **doğru** hem de **hatalı** kod ve beklenen çıktılar verilmiştir.
+
+---
+
+### 🐍 Python
+
+#### ✅ Doğru Kod
+```python
+def topla(a, b):
+    return a + b
+
+print(topla(2, 3))
+```
+
+#### Beklenen Çıktı:
+
+- Hangi Dil → Python
+- Kodu Test Et → Hata yok
+- Hata Düzelt → Aynı kod
+
+#### ❌ Hatalı Kod
+```python
+def topla(a, b)
+    return a + b
+
+print(topla(2, 3))
+```
+
+#### Beklenen Çıktı:
+
+- Hangi Dil → Python
+- Kodu Test Et → Syntax Hatası
+- Hata Düzelt →
+
+```python
+def topla(a, b):
+    return a + b
+
+print(topla(2, 3))
+```
+
+### 💻 C
+#### ✅ Doğru Kod
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Merhaba\n");
+    return 0;
+}
+```
+
+#### Beklenen Çıktı:
+
+- Hangi Dil → C
+- Kodu Test Et → Hata yok
+- Hata Düzelt → Aynı kod
+
+#### ❌ Hatalı Kod
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Merhaba\n")
+    return 0;
+}
+```
+
+#### Beklenen Çıktı:
+
+- Hangi Dil → C
+- Kodu Test Et → Noktalı Virgül Hatası
+- Hata Düzelt →
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Merhaba\n");
+    return 0;
+}
+```
+
+### 💠 C#
+#### ✅ Doğru Kod
+
+```c#
+using System;
+
+class Program {
+    static void Main(string[] args) {
+        Console.WriteLine("Merhaba");
+    }
+}
+```
+
+#### Beklenen Çıktı:
+
+- Hangi Dil → C#
+- Kodu Test Et → Hata yok
+- Hata Düzelt → Aynı kod
+
+#### ❌ Hatalı Kod
+
+```c#
+using System;
+
+class Program {
+    static void Main(string[] args) {
+        Console.WriteLi("Merhaba");
+    }
+}
+```
+
+#### Beklenen Çıktı:
+
+- Hangi Dil → C#
+- Kodu Test Et → Metot Adı Hatası
+- Hata Düzelt →
+
+```c#
+using System;
+
+class Program {
+    static void Main(string[] args) {
+        Console.WriteLine("Merhaba");
+    }
+}
+```
+
+### ☕ Java
+#### ✅ Doğru Kod
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Merhaba");
+    }
+}
+```
+
+#### Beklenen Çıktı:
+
+- Hangi Dil → Java
+- Kodu Test Et → Hata yok
+- Hata Düzelt → Aynı kod
+
+#### ❌ Hatalı Kod
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.printLn("Merhaba");
+    }
+}
+```
+
+#### Beklenen Çıktı:
+
+- Hangi Dil → Java
+- Kodu Test Et → Büyük/Küçük Harf Hatası
+- Hata Düzelt →
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Merhaba");
+    }
+}
+```
+
+### 🌐 JavaScript
+#### ✅ Doğru Kod
+
+```js
+function selamVer() {
+    console.log("Merhaba");
+}
+
+selamVer();
+```
+
+#### Beklenen Çıktı:
+
+- Hangi Dil → JavaScript
+- Kodu Test Et → Hata yok
+- Hata Düzelt → Aynı kod
+
+#### ❌ Hatalı Kod
+
+```js
+function selamVer() {
+    Console.WriteLine("Merhaba");
+}
+
+selamVer();
+```
+
+#### Beklenen Çıktı:
+
+- Hangi Dil → JavaScript
+- Kodu Test Et → Yanlış Dil Komutu Hatası
+- Hata Düzelt →
+
+```js
+function selamVer() {
+    console.log("Merhaba");
+}
+
+selamVer();
+```
+
+---
+
+## 📁 Proje Yapısı
+
+```text
+Introduction-to-Data-Visualization-Project-Assignment/
+│
+├── main.pyw            # Ana uygulama (GUI + tüm işlem mantığı)
+├── README.md           # Proje dokümantasyonu
+├── requirements.txt    # Gerekli Python kütüphaneleri
+├── BASLAT.bat          # Windows için hızlı başlatma scripti
+├── kurulum.bat         # Otomatik kurulum scripti
+│
+├── .venv/              # Sanal ortam (virtual environment)
+├── __pycache__/        # Python cache dosyaları
+│
+└── .gitattributes      # Git ayarları
+```
+
+### 📌 Açıklamalar
+- main.pyw:
+Uygulamanın ana dosyasıdır. F8 işlemleri ve tüm mantık burada bulunur.
+- requirements.txt:
+Gerekli Python kütüphanelerini içerir.
+- BASLAT.bat / kurulum.bat:
+Windows için kolay kurulum ve çalıştırma sağlar.
+- .venv/:
+Sanal ortam klasörüdür.
+- pycache/:
+Python tarafından otomatik oluşturulur.

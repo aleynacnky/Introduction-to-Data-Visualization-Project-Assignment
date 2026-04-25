@@ -760,15 +760,82 @@ def kodu_kural_tabanli_test_et(kod, dil):
     return False, f"{dil} için henüz özel kontrol tanımlanmadı."
     
 def python_duzelt(kod):
-    return kod
+    yeni_satirlar = []
+
+    for satir in kod.splitlines():
+        yeni_satir = satir
+
+        # def satırında iki nokta eksikse ekle
+        stripped = yeni_satir.strip()
+        if stripped.startswith("def ") and not stripped.endswith(":"):
+            yeni_satir = yeni_satir.rstrip() + ":"
+
+        if stripped.startswith("if ") and not stripped.endswith(":"):
+            yeni_satir = yeni_satir.rstrip() + ":"
+
+        if stripped.startswith("for ") and not stripped.endswith(":"):
+            yeni_satir = yeni_satir.rstrip() + ":"
+
+        if stripped.startswith("while ") and not stripped.endswith(":"):
+            yeni_satir = yeni_satir.rstrip() + ":"
+
+        yeni_satirlar.append(yeni_satir)
+
+    return "\n".join(yeni_satirlar)
 
 
 def c_duzelt(kod):
-    return kod
+    yeni_satirlar = []
+
+    for satir in kod.splitlines():
+        yeni_satir = satir
+        stripped = yeni_satir.strip()
+
+        if (
+            stripped
+            and not stripped.endswith(";")
+            and not stripped.endswith("{")
+            and not stripped.endswith("}")
+            and not stripped.startswith("#")
+            and (
+                "printf(" in stripped
+                or "scanf(" in stripped
+                or "return " in stripped
+            )
+        ):
+            yeni_satir = yeni_satir.rstrip() + ";"
+
+        yeni_satirlar.append(yeni_satir)
+
+    return "\n".join(yeni_satirlar)
 
 
 def cpp_duzelt(kod):
-    return kod
+    yeni_satirlar = []
+
+    for satir in kod.splitlines():
+        yeni_satir = satir
+        stripped = yeni_satir.strip()
+
+        if (
+            stripped
+            and not stripped.endswith(";")
+            and not stripped.endswith("{")
+            and not stripped.endswith("}")
+            and not stripped.startswith("#")
+            and (
+                "cout <<" in stripped
+                or "cin >>" in stripped
+                or "return " in stripped
+                or "std::cout" in stripped
+                or "std::cin" in stripped
+            )
+        ):
+            yeni_satir = yeni_satir.rstrip() + ";"
+
+        yeni_satirlar.append(yeni_satir)
+
+    return "\n".join(yeni_satirlar)
 
 
 def csharp_duzelt(kod):
